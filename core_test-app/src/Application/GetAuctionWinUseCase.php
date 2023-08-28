@@ -51,7 +51,7 @@ class GetAuctionWinUseCase
         return $highestBid;
     }
 
-    function getSecondHighestBid(array $validBids, Buyer $highestBuyer)
+    private function getSecondHighestBid(array $validBids, Buyer $highestBuyer)
     {
         $filteredBids = array_filter($validBids, function ($b) use ($highestBuyer) {
             return $b->buyer !== $highestBuyer;
