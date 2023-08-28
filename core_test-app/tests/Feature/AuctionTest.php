@@ -13,7 +13,7 @@ class AuctionTest extends TestCase
 {
     public function test_with_invalid_bid_exception(): void
     {
-        $this->expectException(InvalidNegativeBid::class);
+        $this->expectException(exception: InvalidNegativeBid::class);
 
         $objectToAdquire = new ObjectToAdquire(price: 100);
 
@@ -22,7 +22,7 @@ class AuctionTest extends TestCase
 
     public function test_with_bid_already_did(): void
     {
-        $this->expectException(BidAlreadyDid::class);
+        $this->expectException(exception: BidAlreadyDid::class);
 
         $objectToAdquire = new ObjectToAdquire(price: 100);
 
@@ -50,7 +50,7 @@ class AuctionTest extends TestCase
         $useCase = new GetAuctionWinUseCase($objectToAdquire);
         $result = $useCase->execute();
 
-        $this->assertEquals("E", $result->winner->name);
-        $this->assertEquals(130, $result->price);
+        $this->assertEquals(expected: "E", actual: $result->winner->name);
+        $this->assertEquals(expected: 130, actual: $result->price);
     }
 }
